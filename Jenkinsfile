@@ -28,5 +28,3 @@ node {
             sh 'docker logout'
     }
 }
-
-docker buildx create --name multiarch --driver docker-container --bootstrap --use
