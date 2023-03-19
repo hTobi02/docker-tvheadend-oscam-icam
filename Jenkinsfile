@@ -4,10 +4,6 @@ node {
 
         git 'https://github.com/hTobi02/docker-tvheadend-oscam-icam.git'
     }
-    
-    stage('Login Docker') {
-        sh 'echo jenkins | docker login repo.minenbauer.de -u jenkins --password-stdin'
-    }
 
     stage('Build image') {
         sh 'docker buildx build --platform=linux/amd64 -t htobi02/tvheadend-oscam-icam:amd64 .'
@@ -22,9 +18,5 @@ node {
 
     stage('Push image') {
         sh 'docker push htobi02/tvheadend-oscam-icam:latest'
-    }
-    
-    stage('Logout Docker') {
-            sh 'docker logout'
     }
 }
